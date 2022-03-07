@@ -5,3 +5,9 @@
 input {
     margin: 5px;
 }
+
+.id-alert, .password-alert, .nickname-alert {
+    display: none;
+    color: red;
+    font-weight: bold;
+}

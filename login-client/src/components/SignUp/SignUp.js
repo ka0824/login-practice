@@ -7,10 +7,6 @@ function SignUp() {
     const [psContent, setPsContent] = useState(" ");
     const [nickContent, setNickContent] = useState(" ");
 
-    useEffect(() => {
-
-    } , [])
-
     const isId = (id) => {
 
         const idRegEXP = /^[0-9a-zA-Z]{6,15}$/;

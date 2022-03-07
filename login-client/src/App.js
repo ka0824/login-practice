@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Loggined from "../src/components/Loggined/Loggined";
 import SignUp from "../src/components/SignUp/SignUp";
@@ -9,6 +9,11 @@ import '../src/css/App.css';
 function App() {
 
   const [userInfo, setUserInfo] = useState({});
+  const navigate = useNavigate();
+
+  const routeHandler = () => {
+    navigate("/signup")
+  }
 
   return (
     <div className="App">
@@ -26,12 +31,12 @@ function App() {
                 </div>
                 <div className="buttons">
                   <div className="buttons-text">로그인</div>
-                  <div className="buttons-text">회원가입</div>
+                  <div className="buttons-text" onClick={routeHandler}>회원가입</div>
                 </div>
               </div>
           }/> 
-          <Route path="loggined" element={<Loggined />} />
-          <Route path="signup" element={<SignUp />} />
+          <Route path="/loggined" element={<Loggined />} />
+          <Route path="/signup" element={<SignUp />} />
         </Routes>
         
     </div>

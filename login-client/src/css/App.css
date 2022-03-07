@@ -1,0 +1,30 @@
+.App {
+  text-align: center;
+  padding-top: 100px;
+}
+
+.App-logo {
+  width: 20%;
+  height: 20%;
+}
+
+.login-box {
+  margin: 0 auto;
+}
+
+.login-box > * {
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+}
+
+.texts {
+ width: 100px;
+}
+
+.buttons > * {
+  width: 100px;
+  margin: 0, 20px;
+}
+
+

@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
-import "../../css/SignUp.css"
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import "../../css/SignUp.css";
 
 function SignUp() {
 
     const [idContent, setIdContent] = useState(" ");
     const [psContent, setPsContent] = useState(" ");
     const [nickContent, setNickContent] = useState(" ");
+    const navigate = useNavigate();
 
     const isId = (id) => {
 
@@ -30,8 +33,6 @@ function SignUp() {
         const passwordAlert = document.getElementsByClassName("password-alert")[0];
         const nicknameAlert = document.getElementsByClassName("nickname-alert")[0];
         let [isPassId, isPassPassWord, isPassNick] = [false, false, false];
-
-        console.log(isPassId);
 
        if (!idAlert || !passwordAlert || !nicknameAlert) return;
 
@@ -58,13 +59,29 @@ function SignUp() {
         return isPassId && isPassPassWord && isnickname;
     }
 
-    const postInfo = (id, password, nickname) => {
+    const postInfo = async (id, password, nickname) => {
         const isPossible = isAvailable(id, password, nickname);
 
         if (isPossible === false) {
-            console.log("보낼 수 없습니다.")
+            return;
         } else {
-            console.log("준비 완료");
+    
+            try { 
+                const posting = await axios.post('http://localhost:3001/user/signup', {
+                    id: id,
+                    password: password,
+                    nickname: nickname
+                })
+
+                navigate('/');
+
+            } catch (err) {
+                if (err.response.status === 409) {
+                    alert("중복된 Id가 존재합니다.")
+                } 
+            }
+
+
         }
     }
 

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import axios from "axios";
+import * as actions from "../src/actions/index";
 import Loggined from "../src/components/Loggined/Loggined";
 import SignUp from "../src/components/SignUp/SignUp";
 import logo from './logo.svg';
